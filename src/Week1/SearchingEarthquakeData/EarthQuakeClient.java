@@ -8,8 +8,17 @@ import Week1.SearchingEarthquakeData.provided.*;
  * Assignment 1: Filtering by Magnitude and Distance
  * In this assignment you will complete the program to filter earthquake data by magnitude and distance,
  * which was described in this lesson in the videos “Coding a Magnitude Filter” and “Coding a Distance Filter.”
- * <p>
+ *
  * Specifically, for this assignment, you will only modify one class, the EarthQuakeClient class:
+ */
+
+/**
+ * Assignment 2: Filtering by Depth
+ * In this assignment you will filter earthquakes by their depth, finding those earthquakes whose depth is between
+ * a minimum and maximum value. For more information on what the "depth" of an earthquake means, see the information
+ * here: http://earthquake.usgs.gov/learn/topics/seismology/determining_depth.php
+ *
+ * Specifically, for this assignment, you will add new methods to the EarthQuakeClient class
  */
 
 public class EarthQuakeClient {
@@ -26,12 +35,12 @@ public class EarthQuakeClient {
     */
     public ArrayList<QuakeEntry> filterByMagnitude(ArrayList<QuakeEntry> quakeData, double magMin) {
         ArrayList<QuakeEntry> answer = new ArrayList<QuakeEntry>();
-
-        for (int i = 0; i < quakeData.size(); ++i) {
-            if (quakeData.get(i).getMagnitude() > magMin) {
-                answer.add(quakeData.get(i));
+        quakeData.forEach(qe -> {
+            if (qe.getMagnitude() > magMin) {
+                answer.add(qe);
             }
-        }
+        });
+
         return answer;
     }
 
@@ -45,11 +54,28 @@ public class EarthQuakeClient {
     */
     public ArrayList<QuakeEntry> filterByDistanceFrom(ArrayList<QuakeEntry> quakeData, double distMax, Location from) {
         ArrayList<QuakeEntry> answer = new ArrayList<QuakeEntry>();
-        for (int i = 0; i < quakeData.size(); ++i) {
-            if (distMax > from.distanceTo(quakeData.get(i).getLocation())/1000) {
-                answer.add(quakeData.get(i));
+        quakeData.forEach(qe -> {
+            if (distMax > from.distanceTo(qe.getLocation())/1000) {
+                answer.add(qe);
             }
-        }
+        });
+        return answer;
+    }
+
+    /*
+    * Write the method filterByDepth that has three parameters, an ArrayList of type QuakeEntry named quakeData,
+    * a double named minDepth and a double named maxDepth. This method should return an ArrayList of type QuakeEntry
+    * of all the earthquakes from quakeData whose depth is between minDepth and maxDepth, exclusive.
+    * (Do not include quakes with depth exactly minDepth or maxDepth.)
+    */
+    public ArrayList<QuakeEntry> filterByDepth(ArrayList<QuakeEntry> quakeData, double minDepth, double maxDepth) {
+        ArrayList<QuakeEntry> answer = new ArrayList<QuakeEntry>();
+        quakeData.forEach(qe -> {
+            if (qe.getDepth() < maxDepth && qe.getDepth() > minDepth) {
+                answer.add(qe);
+            }
+        });
+
         return answer;
     }
 
@@ -108,6 +134,23 @@ public class EarthQuakeClient {
         ArrayList<QuakeEntry> closeQuakes = this.filterByDistanceFrom(list, 1000, bridgeport);
         closeQuakes.forEach(a -> System.out.println(bridgeport.distanceTo(a.getLocation())/1000 + "\t" + a.getInfo()));
         System.out.println("Total quakes:" + closeQuakes.size());
+    }
+
+    /*
+    * Write the void method quakesOfDepth that has no parameters to use filterByDepth and print all the earthquakes
+    * from a data source whose depth is between a given minimum and maximum value. You should also print out the number
+    * of earthquakes found.
+    */
+    public void quakesOfDepth() {
+        EarthQuakeParser parser = new EarthQuakeParser();
+        String source = "src/Week1/SearchingEarthquakeData/data/nov20quakedatasmall.atom";
+        ArrayList<QuakeEntry> list = parser.read(source);
+        System.out.println("read data for " + list.size() + " quakes");
+
+        ArrayList<QuakeEntry> deepQuakes = this.filterByDepth(list, -10000.0, -5000.0);
+        deepQuakes.forEach(a -> System.out.println(a));
+        System.out.println("Total quakes:" + deepQuakes.size());
+
     }
 
     public void createCSV() {

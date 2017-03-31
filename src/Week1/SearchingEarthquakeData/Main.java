@@ -5,6 +5,7 @@ public class Main {
         System.out.println("Hi");
         EarthQuakeClient eQC = new EarthQuakeClient();
         //eQC.bigQuakes();
-        eQC.closeToMe();
+        //eQC.closeToMe();
+        eQC.quakesOfDepth();
     }
 }
