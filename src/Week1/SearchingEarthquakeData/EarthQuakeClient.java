@@ -91,7 +91,7 @@ public class EarthQuakeClient {
     * location where (“start” means the phrase must start the title, “end” means the phrase must end the title and “any”
     * means the phrase is a substring anywhere in the title.)
     */
-    public ArrayList<QuakeEntry> filterByPhrase (ArrayList<QuakeEntry> quakeData, String where, String phrase) {
+    public ArrayList<QuakeEntry> filterByPhrase(ArrayList<QuakeEntry> quakeData, String where, String phrase) {
         ArrayList<QuakeEntry> answer = new ArrayList<QuakeEntry>();
         quakeData.forEach(qe -> {
             if (where.equals("start") && qe.getInfo().startsWith(phrase) ||
@@ -128,7 +128,7 @@ public class EarthQuakeClient {
         ArrayList<QuakeEntry> list = parser.read(source);
         System.out.println("read data for " + list.size() + " quakes");
         ArrayList<QuakeEntry> bigQuakes = this.filterByMagnitude(list, magMin);
-        bigQuakes.forEach(a -> System.out.println(a));
+        bigQuakes.forEach(System.out::println);
         System.out.println("Total quakes:" + bigQuakes.size());
 
     }
@@ -167,7 +167,7 @@ public class EarthQuakeClient {
 
         System.out.println("Find quakes with depths between " + minDepth + " and " + maxDepth);
         ArrayList<QuakeEntry> deepQuakes = this.filterByDepth(list, minDepth, maxDepth);
-        deepQuakes.forEach(a -> System.out.println(a));
+        deepQuakes.forEach(System.out::println);
         System.out.println("Found " + deepQuakes.size() + "quakes that match that criteria");
     }
 
@@ -176,7 +176,7 @@ public class EarthQuakeClient {
     * have phrase in their title in a given position in the title. You should also print out the number of earthquakes
     * found.
     */
-    public void quakesByPhrase (String where, String phrase) {
+    public void quakesByPhrase(String where, String phrase) {
         EarthQuakeParser parser = new EarthQuakeParser();
         String source = "src/Week1/SearchingEarthquakeData/data/nov20quakedatasmall.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
