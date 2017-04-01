@@ -4,7 +4,8 @@ package Week1.SearchingEarthquakeData;
  * Find N-closest quakes
  * 
  * @author Duke Software/Learn to Program
- * @version 1.0, November 2015
+ * @author AlexRezv
+ * @version 2.0, April 2017
  *
  * Assignment 4: Finding the Closest Earthquakes to a Location
  * In this assignment you will complete the program to determine the N closests earthquakes to a specified location that

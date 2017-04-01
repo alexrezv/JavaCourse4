@@ -8,7 +8,9 @@ public class Main {
         //eQC.closeToMe(1000);
         //eQC.quakesOfDepth(-10000.0, -5000.0);
         //eQC.quakesByPhrase("any", "Can");
-        ClosestQuakes cQ = new ClosestQuakes();
-        cQ.findClosestQuakes();
+        //ClosestQuakes cQ = new ClosestQuakes();
+        //cQ.findClosestQuakes();
+        LargestQuakes lQ = new LargestQuakes();
+        lQ.findLargestQuakes();
     }
 }
