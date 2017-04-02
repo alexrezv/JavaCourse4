@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  * Created by alex on 01.04.17.
- *
+ * <p>
  * Assignment 5: Finding the Largest Magnitude Earthquakes
  * In this assignment you will write a new class and methods to determine the N biggest earthquakes,
  * those with largest magnitude.
@@ -29,7 +29,10 @@ public class LargestQuakes {
         //list.forEach(System.out::println);
         System.out.println("read data for " + list.size() + " quakes");
         //System.out.println(this.indexOfLargest(list) + "\t" + list.get(this.indexOfLargest(list)).getMagnitude());
-        this.getLargest(list, howMany).forEach(System.out::println);
+        ArrayList<QuakeEntry> largest;
+        largest = this.getLargest(list, howMany);
+        largest.forEach(System.out::println);
+        System.out.println(largest.size());
     }
 
     /*
@@ -40,7 +43,7 @@ public class LargestQuakes {
     * location. You will see that the largest such earthquake is at location 3 and has magnitude 5.50. Once this works
     * you may want to comment this out.
     */
-    public int indexOfLargest (ArrayList<QuakeEntry> data) {
+    public int indexOfLargest(ArrayList<QuakeEntry> data) {
         int indexOfLargest = 0;
         double maxMagnitude = data.stream().map(a -> a.getMagnitude()).max(Double::compareTo).orElse(null);
 
@@ -60,7 +63,7 @@ public class LargestQuakes {
     * the number of earthquakes returned in the ArrayList is equal to the number of earthquakes in quakeData.
     * This method should call the method indexOfLargest.
     */
-    public ArrayList<QuakeEntry> getLargest (ArrayList<QuakeEntry> quakeData, int howMany) {
+    public ArrayList<QuakeEntry> getLargest(ArrayList<QuakeEntry> quakeData, int howMany) {
         ArrayList<QuakeEntry> quakeDataCopy = new ArrayList<>(quakeData);
         ArrayList<QuakeEntry> largestQuakes = new ArrayList<>();
         if (howMany > quakeDataCopy.size()) {

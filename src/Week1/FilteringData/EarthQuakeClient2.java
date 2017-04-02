@@ -43,11 +43,11 @@ public class EarthQuakeClient2 {
         ArrayList<QuakeEntry> list = parser.read(source);
         System.out.println("read data for " + list.size() + " quakes");
 
-        Filter f1 = new MagnitudeFilter("magF", 4.0, 5.0);
-        Filter f2 = new DepthFilter("depF", -35000.0, -12000.0);
-        //Location tokyo = new Location(35.42, 139.43);
-        //Filter f1 = new DistanceFilter("distF", tokyo, 10000000);
-        //Filter f2 = new PhraseFilter("phraseF","Japan", "end");
+        Filter f1 = new MagnitudeFilter("magF", 3.5, 4.5);
+        Filter f2 = new DepthFilter("depF", -55000.0, -20000.0);
+        //Location denver = new Location(39.7392, -104.9903);
+        //Filter f1 = new DistanceFilter("distF", denver, 1000000);
+        //Filter f2 = new PhraseFilter("phraseF","a", "end");
         ArrayList<QuakeEntry> m7;
         m7 = this.filter(list, f1);
         m7 = this.filter(m7, f2);
@@ -67,16 +67,16 @@ public class EarthQuakeClient2 {
     * between 0.0 and 2.0, to test the depth between -100000.0 and -10000.0, and if the letter “a” is in the title.
     * Then use filter(list, maf) to use all three filters and print out the resulting list of earthquakes.
     */
-    public void testMatchAllFilter () {
+    public void testMatchAllFilter() {
         EarthQuakeParser parser = new EarthQuakeParser();
         String source = "src/Week1/data/nov20quakedata.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
         System.out.println("read data for " + list.size() + " quakes");
 
         MatchAllFilter maf = new MatchAllFilter();
-        maf.addFilter(new MagnitudeFilter("magF", 0.0, 2.0));
-        maf.addFilter(new DepthFilter("depthF", -100000.0, -10000.0));
-        maf.addFilter(new PhraseFilter("phrF", "a", "any"));
+        maf.addFilter(new MagnitudeFilter("magF", 1.0, 4.0));
+        maf.addFilter(new DepthFilter("depthF", -180000.0, -30000.0));
+        maf.addFilter(new PhraseFilter("phrF", "o", "any"));
         ArrayList<QuakeEntry> filtered = this.filter(list, maf);
         filtered.forEach(System.out::println);
         System.out.println(filtered.size());
@@ -91,17 +91,17 @@ public class EarthQuakeClient2 {
     * (36.1314, -95.9372) is less than 10000000 meters (10000 km), and if the substring “Ca” is in the title. Then use
     * filter(list, maf) to use all three filters and print out the resulting list of earthquakes.
     */
-    public void testMatchAllFilter2 () {
+    public void testMatchAllFilter2() {
         EarthQuakeParser parser = new EarthQuakeParser();
         String source = "src/Week1/data/nov20quakedata.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
         System.out.println("read data for " + list.size() + " quakes");
 
         MatchAllFilter maf = new MatchAllFilter();
-        maf.addFilter(new MagnitudeFilter("magF", 0.0, 3.0));
-        Location tulsa = new Location(36.1314, -95.9372);
-        maf.addFilter(new DistanceFilter("distF", tulsa, 10000000));
-        maf.addFilter(new PhraseFilter("phrF", "Ca", "any"));
+        maf.addFilter(new MagnitudeFilter("magF", 0.0, 5.0));
+        Location billund = new Location(55.7308, 9.1153);
+        maf.addFilter(new DistanceFilter("distF", billund, 3000000));
+        maf.addFilter(new PhraseFilter("phrF", "e", "any"));
         ArrayList<QuakeEntry> filtered = this.filter(list, maf);
         filtered.forEach(System.out::println);
         System.out.println(filtered.size());

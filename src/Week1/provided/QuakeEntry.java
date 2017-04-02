@@ -6,28 +6,28 @@ public class QuakeEntry implements Comparable<QuakeEntry> {
     private double depth;
     private double magnitude;
 
-    public QuakeEntry(double lat, double lon, double mag, 
-    String t, double d) {
-        myLocation = new Location(lat,lon);
+    public QuakeEntry(double lat, double lon, double mag,
+                      String t, double d) {
+        myLocation = new Location(lat, lon);
 
         magnitude = mag;
         title = t;
         depth = d;
     }
 
-    public Location getLocation(){
+    public Location getLocation() {
         return myLocation;
     }
 
-    public double getMagnitude(){
+    public double getMagnitude() {
         return magnitude;
     }
 
-    public String getInfo(){
+    public String getInfo() {
         return title;
     }
 
-    public double getDepth(){
+    public double getDepth() {
         return depth;
     }
 
@@ -47,8 +47,8 @@ public class QuakeEntry implements Comparable<QuakeEntry> {
         return 0;
     }
 
-    public String toString(){
-        return String.format("(%3.2f, %3.2f), mag = %3.2f, depth = %3.2f, title = %s", myLocation.getLatitude(),myLocation.getLongitude(),magnitude,depth,title);
+    public String toString() {
+        return String.format("(%3.2f, %3.2f), mag = %3.2f, depth = %3.2f, title = %s", myLocation.getLatitude(), myLocation.getLongitude(), magnitude, depth, title);
     }
 
 }

@@ -161,7 +161,7 @@ public class EarthQuakeClient {
     */
     public void quakesOfDepth(double minDepth, double maxDepth) {
         EarthQuakeParser parser = new EarthQuakeParser();
-        String source = "src/Week1/SearchingEarthquakeData/data/nov20quakedata.atom";
+        String source = "src/Week1/data/nov20quakedata.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
         System.out.println("read data for " + list.size() + " quakes");
 
@@ -178,7 +178,7 @@ public class EarthQuakeClient {
     */
     public void quakesByPhrase(String where, String phrase) {
         EarthQuakeParser parser = new EarthQuakeParser();
-        String source = "src/Week1/SearchingEarthquakeData/data/nov20quakedata.atom";
+        String source = "src/Week1/data/nov20quakedata.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
         System.out.println("read data for " + list.size() + " quakes");
 

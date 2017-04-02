@@ -21,7 +21,7 @@ public class DepthFilter implements Filter {
         this.maxDepth = maxDepth;
     }
 
-    public String getName () {
+    public String getName() {
         return this.name;
     }
 

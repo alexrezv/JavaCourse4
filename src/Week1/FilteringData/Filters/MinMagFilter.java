@@ -18,7 +18,7 @@ public class MinMagFilter implements Filter {
         this.name = filterName;
     }
 
-    public String getName () {
+    public String getName() {
         return this.name;
     }
 
