@@ -22,6 +22,9 @@ public class Main {
 
         /*FilteringData*/
         EarthQuakeClient2 eQC2 = new EarthQuakeClient2();
-        eQC2.quakesWithFilter();
+        //eQC2.quakesWithFilter();
+        //eQC2.testMatchAllFilter();
+        eQC2.testMatchAllFilter2();
+
     }
 }

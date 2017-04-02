@@ -10,14 +10,20 @@ import Week1.provided.QuakeEntry;
  * @version 2 April 2017
  */
 public class MinMagFilter implements Filter {
-    private double magMin;
+    private double minMag;
+    private String name;
 
-    public MinMagFilter(double min) {
-        magMin = min;
+    public MinMagFilter(String filterName, double min) {
+        this.minMag = min;
+        this.name = filterName;
+    }
+
+    public String getName () {
+        return this.name;
     }
 
     public boolean satisfies(QuakeEntry qe) {
-        return qe.getMagnitude() >= magMin;
+        return qe.getMagnitude() >= minMag;
     }
 
 }

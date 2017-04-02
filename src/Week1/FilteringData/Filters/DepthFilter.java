@@ -12,11 +12,17 @@ import Week1.provided.QuakeEntry;
  * return false.
  */
 public class DepthFilter implements Filter {
+    private String name;
     private double minDepth, maxDepth;
 
-    public DepthFilter(double minDepth, double maxDepth) {
+    public DepthFilter(String filterName, double minDepth, double maxDepth) {
+        this.name = filterName;
         this.minDepth = minDepth;
         this.maxDepth = maxDepth;
+    }
+
+    public String getName () {
+        return this.name;
     }
 
     public boolean satisfies(QuakeEntry qe) {

@@ -13,10 +13,16 @@ import Week1.provided.QuakeEntry;
  */
 public class MagnitudeFilter implements Filter {
     private double minMagnitude, maxMagnitude;
+    private String name;
 
-    public MagnitudeFilter(double minMagnitude, double maxMagnitude) {
+    public MagnitudeFilter(String filterName, double minMagnitude, double maxMagnitude) {
         this.minMagnitude = minMagnitude;
         this.maxMagnitude = maxMagnitude;
+        this.name = filterName;
+    }
+
+    public String getName () {
+        return this.name;
     }
 
     public boolean satisfies(QuakeEntry qe) {

@@ -15,10 +15,16 @@ import Week1.provided.QuakeEntry;
  */
 public class PhraseFilter implements Filter {
     private String phraseToSearch, requestType;
+    private String name;
 
-    public PhraseFilter(String phraseToSearch, String requestType) {
+    public PhraseFilter(String filterName, String phraseToSearch, String requestType) {
         this.phraseToSearch = phraseToSearch;
         this.requestType = requestType;
+        this.name = filterName;
+    }
+
+    public String getName () {
+        return this.name;
     }
 
     public boolean satisfies(QuakeEntry qe) {

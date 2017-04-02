@@ -15,10 +15,16 @@ import Week1.provided.QuakeEntry;
 public class DistanceFilter implements Filter {
     private double maxDistance;
     private Location myLocation;
+    private String name;
 
-    public DistanceFilter(Location myLocation, double maxDistance) {
+    public DistanceFilter(String filterName, Location myLocation, double maxDistance) {
         this.maxDistance = maxDistance;
         this.myLocation = myLocation;
+        this.name = filterName;
+    }
+
+    public String getName () {
+        return this.name;
     }
 
     public boolean satisfies(QuakeEntry qe) {
