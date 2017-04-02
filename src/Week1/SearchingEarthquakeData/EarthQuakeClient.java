@@ -1,8 +1,8 @@
 package Week1.SearchingEarthquakeData;
 
-import Week1.SearchingEarthquakeData.provided.EarthQuakeParser;
-import Week1.SearchingEarthquakeData.provided.Location;
-import Week1.SearchingEarthquakeData.provided.QuakeEntry;
+import Week1.provided.EarthQuakeParser;
+import Week1.provided.Location;
+import Week1.provided.QuakeEntry;
 
 import java.util.ArrayList;
 
@@ -161,14 +161,14 @@ public class EarthQuakeClient {
     */
     public void quakesOfDepth(double minDepth, double maxDepth) {
         EarthQuakeParser parser = new EarthQuakeParser();
-        String source = "src/Week1/SearchingEarthquakeData/data/nov20quakedatasmall.atom";
+        String source = "src/Week1/SearchingEarthquakeData/data/nov20quakedata.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
         System.out.println("read data for " + list.size() + " quakes");
 
         System.out.println("Find quakes with depths between " + minDepth + " and " + maxDepth);
         ArrayList<QuakeEntry> deepQuakes = this.filterByDepth(list, minDepth, maxDepth);
         deepQuakes.forEach(System.out::println);
-        System.out.println("Found " + deepQuakes.size() + "quakes that match that criteria");
+        System.out.println("Found " + deepQuakes.size() + " quakes that match that criteria");
     }
 
     /*
@@ -178,7 +178,7 @@ public class EarthQuakeClient {
     */
     public void quakesByPhrase(String where, String phrase) {
         EarthQuakeParser parser = new EarthQuakeParser();
-        String source = "src/Week1/SearchingEarthquakeData/data/nov20quakedatasmall.atom";
+        String source = "src/Week1/SearchingEarthquakeData/data/nov20quakedata.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
         System.out.println("read data for " + list.size() + " quakes");
 

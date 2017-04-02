@@ -25,7 +25,7 @@
  * are Android specific so that the file compiles and can be used
  * outside of Android. Also added constructor with Latitude and Longitude.
  */
-package Week1.SearchingEarthquakeData.provided;
+package Week1.provided;
 
 import java.text.DecimalFormat;
 import java.util.StringTokenizer;
@@ -81,7 +81,8 @@ public class Location {
      * @hide
      */
     public static final String EXTRA_NO_GPS_LOCATION = "noGPSLocation";
-
+    // Scratchpad
+    private final float[] mResults = new float[2];
     private String mProvider;
     private long mTime = 0;
     private long mElapsedRealtimeNanos = 0;
@@ -96,7 +97,6 @@ public class Location {
     private boolean mHasAccuracy = false;
     private float mAccuracy = 0.0f;
     private boolean mIsFromMockProvider = false;
-
     // Cache the inputs and outputs of computeDistanceAndBearing
     // so calls to distanceTo() and bearingTo() can share work
     private double mLat1 = 0.0;
@@ -105,8 +105,6 @@ public class Location {
     private double mLon2 = 0.0;
     private float mDistance = 0.0f;
     private float mInitialBearing = 0.0f;
-    // Scratchpad
-    private final float[] mResults = new float[2];
 
     /**
      * Construct a new Location with a named provider.
@@ -130,46 +128,6 @@ public class Location {
     public Location(double latitude, double longitude){
         mLatitude = latitude;
         mLongitude = longitude;
-    }
-
-    /**
-     * Sets the contents of the location to the values from the given location.
-     */
-    public void set(Location l) {
-        mProvider = l.mProvider;
-        mTime = l.mTime;
-        mElapsedRealtimeNanos = l.mElapsedRealtimeNanos;
-        mLatitude = l.mLatitude;
-        mLongitude = l.mLongitude;
-        mHasAltitude = l.mHasAltitude;
-        mAltitude = l.mAltitude;
-        mHasSpeed = l.mHasSpeed;
-        mSpeed = l.mSpeed;
-        mHasBearing = l.mHasBearing;
-        mBearing = l.mBearing;
-        mHasAccuracy = l.mHasAccuracy;
-        mAccuracy = l.mAccuracy;
-        mIsFromMockProvider = l.mIsFromMockProvider;
-    }
-
-    /**
-     * Clears the contents of the location.
-     */
-    public void reset() {
-        mProvider = null;
-        mTime = 0;
-        mElapsedRealtimeNanos = 0;
-        mLatitude = 0;
-        mLongitude = 0;
-        mHasAltitude = false;
-        mAltitude = 0;
-        mHasSpeed = false;
-        mSpeed = 0;
-        mHasBearing = false;
-        mBearing = 0;
-        mHasAccuracy = false;
-        mAccuracy = 0;
-        mIsFromMockProvider = false;
     }
 
     /**
@@ -417,6 +375,46 @@ public class Location {
         }
         computeDistanceAndBearing(startLatitude, startLongitude,
             endLatitude, endLongitude, results);
+    }
+
+    /**
+     * Sets the contents of the location to the values from the given location.
+     */
+    public void set(Location l) {
+        mProvider = l.mProvider;
+        mTime = l.mTime;
+        mElapsedRealtimeNanos = l.mElapsedRealtimeNanos;
+        mLatitude = l.mLatitude;
+        mLongitude = l.mLongitude;
+        mHasAltitude = l.mHasAltitude;
+        mAltitude = l.mAltitude;
+        mHasSpeed = l.mHasSpeed;
+        mSpeed = l.mSpeed;
+        mHasBearing = l.mHasBearing;
+        mBearing = l.mBearing;
+        mHasAccuracy = l.mHasAccuracy;
+        mAccuracy = l.mAccuracy;
+        mIsFromMockProvider = l.mIsFromMockProvider;
+    }
+
+    /**
+     * Clears the contents of the location.
+     */
+    public void reset() {
+        mProvider = null;
+        mTime = 0;
+        mElapsedRealtimeNanos = 0;
+        mLatitude = 0;
+        mLongitude = 0;
+        mHasAltitude = false;
+        mAltitude = 0;
+        mHasSpeed = false;
+        mSpeed = 0;
+        mHasBearing = false;
+        mBearing = 0;
+        mHasAccuracy = false;
+        mAccuracy = 0;
+        mIsFromMockProvider = false;
     }
 
     /**

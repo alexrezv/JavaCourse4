@@ -1,7 +1,7 @@
 package Week1.SearchingEarthquakeData;
 
-import Week1.SearchingEarthquakeData.provided.EarthQuakeParser;
-import Week1.SearchingEarthquakeData.provided.QuakeEntry;
+import Week1.provided.EarthQuakeParser;
+import Week1.provided.QuakeEntry;
 
 import java.util.ArrayList;
 
@@ -22,14 +22,14 @@ public class LargestQuakes {
     * and also print how many there are. After this works you should comment out the printing of all the earthquakes,
     * but continue to print out the total number of earthquakes read in.
     */
-    public void findLargestQuakes () {
+    public void findLargestQuakes(int howMany) {
         EarthQuakeParser parser = new EarthQuakeParser();
-        String source = "src/Week1/SearchingEarthquakeData/data/nov20quakedatasmall.atom";
+        String source = "src/Week1/data/nov20quakedata.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
         //list.forEach(System.out::println);
         System.out.println("read data for " + list.size() + " quakes");
         //System.out.println(this.indexOfLargest(list) + "\t" + list.get(this.indexOfLargest(list)).getMagnitude());
-        this.getLargest(list, 5).forEach(System.out::println);
+        this.getLargest(list, howMany).forEach(System.out::println);
     }
 
     /*

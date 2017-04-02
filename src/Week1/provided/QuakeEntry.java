@@ -1,4 +1,4 @@
-package Week1.SearchingEarthquakeData.provided;
+package Week1.provided;
 
 public class QuakeEntry implements Comparable<QuakeEntry> {
     private Location myLocation;
