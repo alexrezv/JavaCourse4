@@ -1,7 +1,7 @@
 package Week1.FilteringData.Filters;
 
 import Week1.FilteringData.Filter;
-import Week1.provided.QuakeEntry;
+import provided.QuakeEntry;
 
 /**
  * Created by alex on 02.04.17.

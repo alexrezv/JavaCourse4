@@ -1,7 +1,7 @@
 package Week1.SearchingEarthquakeData;
 
-import Week1.provided.EarthQuakeParser;
-import Week1.provided.QuakeEntry;
+import provided.EarthQuakeParser;
+import provided.QuakeEntry;
 
 import java.util.ArrayList;
 

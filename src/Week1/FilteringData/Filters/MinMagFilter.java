@@ -1,7 +1,7 @@
 package Week1.FilteringData.Filters;
 
 import Week1.FilteringData.Filter;
-import Week1.provided.QuakeEntry;
+import provided.QuakeEntry;
 
 /**
  * Write a description of class MinMaxFilter here.
