@@ -23,7 +23,7 @@ public class QuakeSortInPlace {
         // TODO Auto-generated constructor stub
     }
 
-    public int getSmallestMagnitude(ArrayList<QuakeEntry> quakes, int from) {
+    private int getSmallestMagnitude(ArrayList<QuakeEntry> quakes, int from) {
         int minIdx = from;
         for (int i = from + 1; i < quakes.size(); i++) {
             if (quakes.get(i).getMagnitude() < quakes.get(minIdx).getMagnitude()) {
@@ -33,7 +33,7 @@ public class QuakeSortInPlace {
         return minIdx;
     }
 
-    public void sortByMagnitude(ArrayList<QuakeEntry> in) {
+    private void sortByMagnitude(ArrayList<QuakeEntry> in) {
 
         for (int i = 0; i < in.size(); i++) {
             int minIdx = getSmallestMagnitude(in, i);
@@ -49,7 +49,7 @@ public class QuakeSortInPlace {
         EarthQuakeParser parser = new EarthQuakeParser();
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         //String source = "data/nov20quakedatasmall.atom";
-        String source = "data/earthquakeDataSampleSix2.atom";
+        String source = "data/earthquakeDataSampleSix1.atom";
         //String source = "data/nov20quakedata.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
 
@@ -77,7 +77,23 @@ public class QuakeSortInPlace {
         * quake with magnitude 4.80 is last, after pass 1 the quake with magnitude 2.60 is where it belongs. Note that
         * pass 3 wasn’t needed as the quakes were already in sorted order. That might happen sometimes.
         */
-        this.sortByMagnitudeWithBubbleSort(list);
+        //this.sortByMagnitudeWithBubbleSort(list);
+
+        /*
+        * Modify the testSort method to call to sortByMagnitudeWithBubbleSortWithCheck.
+        * Run your program on any data files earthquakeDataSampleSix1.atom (should sort after 2 passes) and
+        * earthquakeDataSampleSix2.atom (should sort after 3 passes). Both of these files have five earthquakes.
+        */
+        //this.sortByMagnitudeWithBubbleSortWithCheck(list);
+
+        /*
+        * Modify the testSort method to call to sortByMagnitudeWithCheck.
+        * Run your program on any data files earthquakeDataSampleSix1.atom (should sort after 3 passes) and
+        * earthquakeDataSampleSix2.atom (should sort after 4 passes). Both of these files have five earthquakes.
+        */
+        this.sortByMagnitudeWithCheck(list);
+
+
         for (QuakeEntry qe : list) {
             System.out.println(qe);
         }
@@ -112,7 +128,7 @@ public class QuakeSortInPlace {
 	* the end of the ArrayList.
 	*/
 
-    public int getLargestDepth(ArrayList<QuakeEntry> quakeData, int from) {
+    private int getLargestDepth(ArrayList<QuakeEntry> quakeData, int from) {
         ArrayList<QuakeEntry> copy = new ArrayList<>(quakeData);
         copy.subList(0, from).clear();
 
@@ -153,7 +169,7 @@ public class QuakeSortInPlace {
     * It should take advantage of the fact that the last numSorted elements are already in sorted order.
     */
 
-    public void onePassBubbleSort (ArrayList<QuakeEntry> quakeData, int numSorted) {
+    private void onePassBubbleSort (ArrayList<QuakeEntry> quakeData, int numSorted) {
         for (int i = 0; i < quakeData.size()-1-numSorted; ++i) {
             if (quakeData.get(i).getMagnitude() > quakeData.get(i+1).getMagnitude()) {
                 QuakeEntry buf = quakeData.get(i);
@@ -175,6 +191,66 @@ public class QuakeSortInPlace {
             this.onePassBubbleSort(in, i);
             in.forEach(System.out::println);
         }
+    }
+
+    /*
+    * Write the method checkInSortedOrder that has one parameter, an ArrayList of type QuakeEntry named quakes.
+    * This method returns true if the earthquakes are in sorted order by magnitude from smallest to largest.
+    * Otherwise this methods returns false. You’ll need to loop through the ArrayList and check adjacent earthquakes
+    * to see if any are out of order.
+    */
+
+    private boolean checkInSortedOrder (ArrayList<QuakeEntry> quakes) {
+        for (int i = 0; i < quakes.size()-1; ++i) {
+            if (quakes.get(i).getMagnitude() > quakes.get(i+1).getMagnitude()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /*
+    * Write the void method sortByMagnitudeWithBubbleSortWithCheck that has one parameter,
+    * an ArrayList of type QuakeEntry named in. If the ArrayList in has N elements in it,
+    * this method should call onePassBubbleSort at most N – 1 times.
+    * This method should call checkInSortedOrder and stop early if the ArrayList is already sorted.
+    * This method should print how many passes were needed to sort the elements.
+    */
+
+    private void sortByMagnitudeWithBubbleSortWithCheck (ArrayList<QuakeEntry> in) {
+        int passes = 0;
+        for (int i = 0; i < in.size()-1; ++i) {
+            this.onePassBubbleSort(in, i);
+            passes+=1;
+            if (this.checkInSortedOrder(in)) break;
+        }
+        System.out.println("Passes needed: " + passes);
+    }
+
+    /*
+    * Write the void method sortByMagnitudeWithCheck that has one parameter, an ArrayList of type QuakeEntry named in.
+    * This method sorts earthquakes by their magnitude from smallest to largest using selection sort similar to the
+    * sortByMagnitude method. However, this method should call checkInSortedOrder and stop early if the ArrayList is
+    * already sorted. This method should print how many passes were needed to sort the elements. For selection sort,
+    * one pass has exactly one swap.
+    */
+
+    public void sortByMagnitudeWithCheck (ArrayList<QuakeEntry> in) {
+        System.out.println("Passes needed: " + this.sortByMagnitudeWithPasses(in));
+    }
+
+    private int sortByMagnitudeWithPasses(ArrayList<QuakeEntry> in) {
+        int passes = 0;
+        for (int i = 0; i < in.size(); i++) {
+            int minIdx = getSmallestMagnitude(in, i);
+            QuakeEntry qi = in.get(i);
+            QuakeEntry qmin = in.get(minIdx);
+            in.set(i, qmin);
+            in.set(minIdx, qi);
+            passes+=1;
+            if (this.checkInSortedOrder(in)) break;
+        }
+        return passes;
     }
 
 }
