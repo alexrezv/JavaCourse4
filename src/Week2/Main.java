@@ -13,9 +13,9 @@ public class Main {
         //qsip.testSort();
 
         DifferentSorters ds = new DifferentSorters();
-        //ds.sortWithCompareTo();
-        //ds.sortByTitleAndDepth();
-        ds.sortByLastWordInTitleThenByMagnitude();
+        //ds.sortWithCompareTo(600);
+        //ds.sortByTitleAndDepth(500);
+        ds.sortByLastWordInTitleThenByMagnitude(500);
 
     }
 }

@@ -24,15 +24,15 @@ public class DifferentSorters {
     * at the end of this method, after sorting and printing out all the elements.
     */
 
-    public void sortWithCompareTo() {
+    public void sortWithCompareTo(int position) {
         EarthQuakeParser parser = new EarthQuakeParser();
-        String source = "data/nov20quakedata.atom";
+        String source = "data/earthQuakeDataWeekDec6sample1.atom";
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
         Collections.sort(list);
         list.forEach(System.out::println);
 
-        int quakeNumber = 10;
+        int quakeNumber = position;
         System.out.println("Print quake entry in position " + quakeNumber);
         System.out.println(list.get(quakeNumber));
 
@@ -72,14 +72,14 @@ public class DifferentSorters {
     * (which is actually the 11th element in the ArrayList) after sorting and printing out all the elements.
     */
 
-    public void sortByTitleAndDepth () {
+    public void sortByTitleAndDepth (int position) {
         EarthQuakeParser parser = new EarthQuakeParser();
-        String source = "data/nov20quakedata.atom";
+        String source = "data/earthQuakeDataWeekDec6sample1.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
         Collections.sort(list, new TitleAndDepthComparator());
         list.forEach(System.out::println);
 
-        int quakeNumber = 10;
+        int quakeNumber = position;
         System.out.println("Print quake entry in position " + quakeNumber);
         System.out.println(list.get(quakeNumber));
     }
@@ -94,14 +94,14 @@ public class DifferentSorters {
     * after sorting and printing out all the elements.
     */
 
-    public void sortByLastWordInTitleThenByMagnitude () {
+    public void sortByLastWordInTitleThenByMagnitude (int position) {
         EarthQuakeParser parser = new EarthQuakeParser();
-        String source = "data/nov20quakedata.atom";
+        String source = "data/earthQuakeDataWeekDec6sample1.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
         Collections.sort(list, new TitleLastAndMagnitudeComparator());
         list.forEach(System.out::println);
 
-        int quakeNumber = 10;
+        int quakeNumber = position;
         System.out.println("Print quake entry in position " + quakeNumber);
         System.out.println(list.get(quakeNumber));
     }
