@@ -14,7 +14,8 @@ public class Main {
 
         DifferentSorters ds = new DifferentSorters();
         //ds.sortWithCompareTo();
-        ds.sortByTitleAndDepth();
+        //ds.sortByTitleAndDepth();
+        ds.sortByLastWordInTitleThenByMagnitude();
 
     }
 }

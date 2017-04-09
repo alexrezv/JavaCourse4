@@ -83,4 +83,26 @@ public class DifferentSorters {
         System.out.println("Print quake entry in position " + quakeNumber);
         System.out.println(list.get(quakeNumber));
     }
+
+    /*
+    * Write the void method sortByLastWordInTitleThenByMagnitude in the DifferentSorters class.
+    * This method should create an EarthQuakeParser, read data from a file on earthquakes and create an ArrayList of
+    * QuakeEntry’s. Then this method should call Collections.sort on this ArrayList and use the
+    * TitleLastAndMagnitudeComparator to sort the earthquakes. You should be able to see that the earthquakes are sorted
+    * by the last word in their title, and those with the same last word are sorted by magnitude. Modify this method to
+    * print out the QuakeEntry in the ArrayList in position 10 (which is actually the 11th element in the ArrayList)
+    * after sorting and printing out all the elements.
+    */
+
+    public void sortByLastWordInTitleThenByMagnitude () {
+        EarthQuakeParser parser = new EarthQuakeParser();
+        String source = "data/nov20quakedata.atom";
+        ArrayList<QuakeEntry> list = parser.read(source);
+        Collections.sort(list, new TitleLastAndMagnitudeComparator());
+        list.forEach(System.out::println);
+
+        int quakeNumber = 10;
+        System.out.println("Print quake entry in position " + quakeNumber);
+        System.out.println(list.get(quakeNumber));
+    }
 }
