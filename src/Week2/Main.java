@@ -13,7 +13,8 @@ public class Main {
         //qsip.testSort();
 
         DifferentSorters ds = new DifferentSorters();
-        ds.sortWithCompareTo();
+        //ds.sortWithCompareTo();
+        ds.sortByTitleAndDepth();
 
     }
 }

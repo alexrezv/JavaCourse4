@@ -30,9 +30,7 @@ public class DifferentSorters {
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
         Collections.sort(list);
-        for (QuakeEntry qe : list) {
-            System.out.println(qe);
-        }
+        list.forEach(System.out::println);
 
         int quakeNumber = 10;
         System.out.println("Print quake entry in position " + quakeNumber);
@@ -63,6 +61,26 @@ public class DifferentSorters {
         for (QuakeEntry qe : list) {
             System.out.println(qe);
         }
+    }
 
+    /*
+    * Write the void method sortByTitleAndDepth in the DifferentSorters class.
+    * This method should create an EarthQuakeParser, read data from a file on earthquakes and create an ArrayList of
+    * QuakeEntry’s. Then this method should call Collections.sort on this ArrayList and use the TitleAndDepthComparator
+    * to sort the earthquakes. You should be able to see that the earthquakes are sorted by title first, and those with
+    * the same title are sorted by depth. Modify this method to print out the QuakeEntry in the ArrayList in position 10
+    * (which is actually the 11th element in the ArrayList) after sorting and printing out all the elements.
+    */
+
+    public void sortByTitleAndDepth () {
+        EarthQuakeParser parser = new EarthQuakeParser();
+        String source = "data/nov20quakedata.atom";
+        ArrayList<QuakeEntry> list = parser.read(source);
+        Collections.sort(list, new TitleAndDepthComparator());
+        list.forEach(System.out::println);
+
+        int quakeNumber = 10;
+        System.out.println("Print quake entry in position " + quakeNumber);
+        System.out.println(list.get(quakeNumber));
     }
 }
