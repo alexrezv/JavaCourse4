@@ -25,6 +25,7 @@
  * are Android specific so that the file compiles and can be used
  * outside of Android. Also added constructor with Latitude and Longitude.
  */
+
 package provided;
 
 import java.text.DecimalFormat;
@@ -763,6 +764,7 @@ public class Location {
         mHasAccuracy = false;
     }
 
+
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
@@ -783,5 +785,4 @@ public class Location {
         s.append(']');
         return s.toString();
     }
-
 }

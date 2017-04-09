@@ -15,7 +15,6 @@ package Week2.ImplementingSelectionSort;
 import provided.EarthQuakeParser;
 import provided.QuakeEntry;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class QuakeSortInPlace {
@@ -49,7 +48,7 @@ public class QuakeSortInPlace {
         EarthQuakeParser parser = new EarthQuakeParser();
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         //String source = "data/nov20quakedatasmall.atom";
-        String source = "data/earthquakeDataSampleSix1.atom";
+        String source = "data/earthQuakeDataDec6sample2.atom";
         //String source = "data/nov20quakedata.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
 
@@ -60,8 +59,8 @@ public class QuakeSortInPlace {
         * sortByLargestDepth. Run your program on any data file and you should see the earthquakes in sorted order from
         * largest depth to smallest depth.
         */
-        //sortByMagnitude(list);
-        //sortByLargestDepth(list);
+        //this.sortByMagnitude(list);
+        //this.sortByLargestDepth(list);
 
         /*
         * Modify the testSort method to comment out the line sortByLargestDepth, and add below this line a call to
@@ -84,14 +83,14 @@ public class QuakeSortInPlace {
         * Run your program on any data files earthquakeDataSampleSix1.atom (should sort after 2 passes) and
         * earthquakeDataSampleSix2.atom (should sort after 3 passes). Both of these files have five earthquakes.
         */
-        //this.sortByMagnitudeWithBubbleSortWithCheck(list);
+        this.sortByMagnitudeWithBubbleSortWithCheck(list);
 
         /*
         * Modify the testSort method to call to sortByMagnitudeWithCheck.
         * Run your program on any data files earthquakeDataSampleSix1.atom (should sort after 3 passes) and
         * earthquakeDataSampleSix2.atom (should sort after 4 passes). Both of these files have five earthquakes.
         */
-        this.sortByMagnitudeWithCheck(list);
+        //this.sortByMagnitudeWithCheck(list);
 
 
         for (QuakeEntry qe : list) {
@@ -169,12 +168,12 @@ public class QuakeSortInPlace {
     * It should take advantage of the fact that the last numSorted elements are already in sorted order.
     */
 
-    private void onePassBubbleSort (ArrayList<QuakeEntry> quakeData, int numSorted) {
-        for (int i = 0; i < quakeData.size()-1-numSorted; ++i) {
-            if (quakeData.get(i).getMagnitude() > quakeData.get(i+1).getMagnitude()) {
+    private void onePassBubbleSort(ArrayList<QuakeEntry> quakeData, int numSorted) {
+        for (int i = 0; i < quakeData.size() - 1 - numSorted; ++i) {
+            if (quakeData.get(i).getMagnitude() > quakeData.get(i + 1).getMagnitude()) {
                 QuakeEntry buf = quakeData.get(i);
-                quakeData.set(i, quakeData.get(i+1));
-                quakeData.set(i+1, buf);
+                quakeData.set(i, quakeData.get(i + 1));
+                quakeData.set(i + 1, buf);
             }
         }
     }
@@ -185,9 +184,9 @@ public class QuakeSortInPlace {
     * elements in in.
     */
 
-    public void sortByMagnitudeWithBubbleSort (ArrayList<QuakeEntry> in) {
+    public void sortByMagnitudeWithBubbleSort(ArrayList<QuakeEntry> in) {
         in.forEach(System.out::println);
-        for (int i = 0; i < in.size()-1; ++i) {
+        for (int i = 0; i < in.size() - 1; ++i) {
             this.onePassBubbleSort(in, i);
             in.forEach(System.out::println);
         }
@@ -200,9 +199,9 @@ public class QuakeSortInPlace {
     * to see if any are out of order.
     */
 
-    private boolean checkInSortedOrder (ArrayList<QuakeEntry> quakes) {
-        for (int i = 0; i < quakes.size()-1; ++i) {
-            if (quakes.get(i).getMagnitude() > quakes.get(i+1).getMagnitude()) {
+    private boolean checkInSortedOrder(ArrayList<QuakeEntry> quakes) {
+        for (int i = 0; i < quakes.size() - 1; ++i) {
+            if (quakes.get(i).getMagnitude() > quakes.get(i + 1).getMagnitude()) {
                 return false;
             }
         }
@@ -217,11 +216,11 @@ public class QuakeSortInPlace {
     * This method should print how many passes were needed to sort the elements.
     */
 
-    private void sortByMagnitudeWithBubbleSortWithCheck (ArrayList<QuakeEntry> in) {
+    private void sortByMagnitudeWithBubbleSortWithCheck(ArrayList<QuakeEntry> in) {
         int passes = 0;
-        for (int i = 0; i < in.size()-1; ++i) {
+        for (int i = 0; i < in.size() - 1; ++i) {
             this.onePassBubbleSort(in, i);
-            passes+=1;
+            passes += 1;
             if (this.checkInSortedOrder(in)) break;
         }
         System.out.println("Passes needed: " + passes);
@@ -235,7 +234,7 @@ public class QuakeSortInPlace {
     * one pass has exactly one swap.
     */
 
-    public void sortByMagnitudeWithCheck (ArrayList<QuakeEntry> in) {
+    public void sortByMagnitudeWithCheck(ArrayList<QuakeEntry> in) {
         System.out.println("Passes needed: " + this.sortByMagnitudeWithPasses(in));
     }
 
@@ -247,7 +246,7 @@ public class QuakeSortInPlace {
             QuakeEntry qmin = in.get(minIdx);
             in.set(i, qmin);
             in.set(minIdx, qi);
-            passes+=1;
+            passes += 1;
             if (this.checkInSortedOrder(in)) break;
         }
         return passes;
