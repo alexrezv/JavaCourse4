@@ -1,6 +1,6 @@
 package Week1.FilteringData;
 
-import Week1.provided.QuakeEntry;
+import provided.QuakeEntry;
 
 import java.util.ArrayList;
 import java.util.function.Predicate;

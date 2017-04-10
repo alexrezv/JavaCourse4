@@ -1,6 +1,6 @@
 package Week1.FilteringData;
 
-import Week1.provided.QuakeEntry;
+import provided.QuakeEntry;
 
 /**
  * Write a description of interface Filter here.

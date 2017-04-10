@@ -13,9 +13,9 @@ package Week1.SearchingEarthquakeData;
  * Specifically, for this assignment, you will only modify the ClosestQuakes class
  */
 
-import Week1.provided.EarthQuakeParser;
-import Week1.provided.Location;
-import Week1.provided.QuakeEntry;
+import provided.EarthQuakeParser;
+import provided.Location;
+import provided.QuakeEntry;
 
 import java.util.ArrayList;
 import java.util.HashMap;
