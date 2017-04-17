@@ -1,6 +1,6 @@
 package Week3;
 
-import Week3.GeneratingRandomText.Refactored.MarkovRunnerWithInterface;
+import Week3.Word_NGrams.MarkovRunner;
 
 /**
  * Created by alex on 13.04.17.
@@ -18,8 +18,11 @@ public class Main {
 
         //Tester.testGetFollowsWithFile();
 
-        MarkovRunnerWithInterface mrwi = new MarkovRunnerWithInterface();
-        mrwi.runMarkov();
+        /*MarkovRunnerWithInterface mrwi = new MarkovRunnerWithInterface();
+        mrwi.runMarkov();*/
+
+        MarkovRunner mr = new MarkovRunner();
+        mr.runMarkovWordTwo();
 
     }
 }

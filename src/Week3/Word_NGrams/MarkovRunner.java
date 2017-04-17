@@ -10,7 +10,7 @@ package Week3.Word_NGrams;
 import edu.duke.FileResource;
 
 public class MarkovRunner {
-    public void runModel(IMarkovModel markov, String text, int size) {
+    private void runModel(IMarkovModel markov, String text, int size) {
         markov.setTraining(text);
         System.out.println("running with " + markov);
         for (int k = 0; k < 3; k++) {
@@ -19,7 +19,7 @@ public class MarkovRunner {
         }
     }
 
-    public void runModel(IMarkovModel markov, String text, int size, int seed) {
+    private void runModel(IMarkovModel markov, String text, int size, int seed) {
         markov.setTraining(text);
         markov.setRandom(seed);
         System.out.println("running with " + markov);
@@ -29,12 +29,25 @@ public class MarkovRunner {
         }
     }
 
+    /*
+    * Once you have MarkovWordOne working, modify the runMarkov method in the MarkovRunner class to use the random seed
+    * set to 175, and generate 120 words.
+    */
     public void runMarkov() {
         FileResource fr = new FileResource();
         String st = fr.asString();
         st = st.replace('\n', ' ');
         MarkovWordOne markovWord = new MarkovWordOne();
-        runModel(markovWord, st, 200);
+        //markovWord.testIndexOf();
+        runModel(markovWord, st, 500, 139);
+    }
+
+    public void runMarkovWordTwo() {
+        FileResource fr = new FileResource();
+        String st = fr.asString();
+        st = st.replace('\n', ' ');
+        MarkovWordTwo mwt = new MarkovWordTwo();
+        runModel(mwt, st, 500, 832);
     }
 
     private void printOut(String s) {
