@@ -1,5 +1,7 @@
 package Week3.GeneratingRandomText;
 
+import Week3.GeneratingRandomText.Refactored.MarkovRunnerWithInterface;
+
 /**
  * Created by alex on 13.04.17.
  */
@@ -9,8 +11,15 @@ public class Main {
         * Create MarkovZero generated texts by running the method runMarkovZero in MarkovRunner.
         * Run the program twice and note that the output is different each time you run it.
         */
-        MarkovRunner mr = new MarkovRunner();
-        mr.runMarkovZero();
+        //MarkovRunner mr = new MarkovRunner();
+        //mr.runMarkovModel();
+        /*Try running the runMarkovOne method. It should compile and do exactly what runMarkovZero did.*/
+        //mr.runMarkovModel();
+
+        //Tester.testGetFollowsWithFile();
+
+        MarkovRunnerWithInterface mrwi = new MarkovRunnerWithInterface();
+        mrwi.runMarkov();
 
     }
 }

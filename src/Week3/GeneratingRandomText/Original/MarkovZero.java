@@ -1,4 +1,4 @@
-package Week3.GeneratingRandomText;
+package Week3.GeneratingRandomText.Original;
 
 /**
  * Write a description of class MarkovZero here.
