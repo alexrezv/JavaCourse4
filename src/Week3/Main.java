@@ -1,4 +1,4 @@
-package Week3.GeneratingRandomText;
+package Week3;
 
 import Week3.GeneratingRandomText.Refactored.MarkovRunnerWithInterface;
 
