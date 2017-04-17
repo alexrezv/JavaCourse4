@@ -1,4 +1,4 @@
-package Week3.Word_NGrams.WordGram;
+package Week3.WordGram;
 
 import java.util.ArrayList;
 

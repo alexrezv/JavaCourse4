@@ -1,4 +1,4 @@
-package Week3;
+package Week3.GeneratingRandomText;
 
 import Week3.Word_NGrams.MarkovRunner;
 
