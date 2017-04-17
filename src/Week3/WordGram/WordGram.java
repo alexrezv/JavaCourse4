@@ -71,4 +71,14 @@ public class WordGram {
         return out;
     }
 
+    /*
+    * In the WordGram class, you will need to add a method named hashCode that has no parameters.
+    * This method should return an integer that is a hash code that represents the WordGram.
+    * Note that String has a method hashCode. You may want to create a String from the WordGram and use the String
+    * hashCode method.
+    */
+    public int hashCode() {
+        return this.toString().hashCode();
+    }
+
 }

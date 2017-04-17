@@ -74,7 +74,6 @@ public class EfficientMarkovModel extends AbstractMarkovModel {
 
     private void buildFullMap() {
         HashMap<String, List> fullMap = new HashMap<>();
-        int order = this.markovOrder;
         for (int i = 0; i < this.myText.length() - this.markovOrder + 1; ++i) {
             String key = this.myText.substring(i, i + this.markovOrder);
             fullMap.putIfAbsent(key, this.getFollows(key));

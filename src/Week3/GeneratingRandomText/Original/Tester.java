@@ -34,7 +34,7 @@ public class Tester {
         st = st.replace('\n', ' ');
         MarkovOne mo = new MarkovOne();
         mo.setTraining(st);
-        System.out.println(mo.getFollows("th"));
-        System.out.println(mo.getFollows("th").size());
+        System.out.println(mo.getFollows("he"));
+        System.out.println(mo.getFollows("he").size());
     }
 }

@@ -34,7 +34,7 @@ public class MarkovRunnerWithInterface {
         st = st.replace('\n', ' ');
         int size = 200;
 
-        MarkovZero mz = new MarkovZero();
+        /*MarkovZero mz = new MarkovZero();
         runModel(mz, st, size,1);
 
         MarkovOne mOne = new MarkovOne();
@@ -80,7 +80,7 @@ public class MarkovRunnerWithInterface {
         text = text.replace('\n', ' ');
         EfficientMarkovModel emm = new EfficientMarkovModel(5);
         //text = "yes-this-is-a-thin-pretty-pink-thistle";
-        this.runModel(emm, text, 50, 615);
+        this.runModel(emm, text, 50, 531);
         emm.printHashMapInfo();
     }
 
